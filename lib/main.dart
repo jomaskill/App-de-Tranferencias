@@ -16,6 +16,47 @@ class BytebankApp extends StatelessWidget {
   }
 }
 
+
+
+class ListaTranferencias extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Tranferências'),),
+      body: Column(
+          children: <Widget>[
+            ItemTranferencia(Transferencia(500.00, 'Juliana')),
+            ItemTranferencia(Transferencia(10000.00, 'Carlos')),
+            ItemTranferencia(Transferencia(3000.00, 'Juliana')),
+          ]
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class ItemTranferencia extends StatelessWidget{
+
+  final Transferencia _transferencia;
+
+
+  ItemTranferencia(this._transferencia);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        leading: Icon(Icons.monetization_on),
+        title: Text(_transferencia.conta.toString()),
+        subtitle: Text(_transferencia.valor.toString()),
+      ),
+    );
+  }
+}
+
 class FormularioTransferencia extends StatelessWidget{
 
   @override
@@ -53,45 +94,6 @@ class FormularioTransferencia extends StatelessWidget{
             onPressed: ,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ListaTranferencias extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Tranferências'),),
-      body: Column(
-          children: <Widget>[
-            ItemTranferencia(Transferencia(500.00, 'Juliana')),
-            ItemTranferencia(Transferencia(10000.00, 'Carlos')),
-            ItemTranferencia(Transferencia(3000.00, 'Juliana')),
-          ]
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-      ),
-    );
-  }
-}
-
-class ItemTranferencia extends StatelessWidget{
-
-  final Transferencia _transferencia;
-
-
-  ItemTranferencia(this._transferencia);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        leading: Icon(Icons.monetization_on),
-        title: Text(_transferencia.conta.toString()),
-        subtitle: Text(_transferencia.valor.toString()),
       ),
     );
   }
